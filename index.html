@@ -22,17 +22,19 @@
 
     .star {
       position:absolute;
-      width:10px; height:10px;
+      width:12px; height:12px;
       background:white;
       border-radius:50%;
-      box-shadow:0 0 15px #fff;
+      box-shadow:0 0 20px #fff;
       cursor:pointer;
-      animation:pulse 2s infinite;
+      animation:pulse 3s infinite ease-in-out;
+      transition:transform 0.3s ease;
     }
+    .star:hover { transform:scale(1.5); }
     @keyframes pulse {
-      0% { transform:scale(1); opacity:0.7; }
-      50% { transform:scale(1.4); opacity:1; }
-      100% { transform:scale(1); opacity:0.7; }
+      0% { opacity:0.6; }
+      50% { opacity:1; }
+      100% { opacity:0.6; }
     }
 
     .memory {
@@ -43,27 +45,37 @@
       color:#d6336c;
       padding:30px;
       border-radius:15px;
-      box-shadow:0 0 30px rgba(255,100,150,0.5);
+      box-shadow:0 0 40px rgba(255,100,150,0.6);
       font-family:'Great Vibes', cursive;
       font-size:1.6em;
       text-align:center;
       display:none;
       z-index:10;
       max-width:500px;
-      animation:fadeIn 1s ease;
+      animation:fadeIn 0.8s ease;
     }
-    @keyframes fadeIn { from{opacity:0; transform:translate(-50%,-60%);} to{opacity:1; transform:translate(-50%,-50%);} }
+    .memory img {
+      width:100%;
+      border-radius:10px;
+      margin-bottom:15px;
+      box-shadow:0 0 15px rgba(0,0,0,0.3);
+    }
+    @keyframes fadeIn {
+      from{opacity:0; transform:translate(-50%,-55%);}
+      to{opacity:1; transform:translate(-50%,-50%);}
+    }
 
     /* Shooting stars */
     .shooting-star {
       position:fixed;
-      width:2px; height:100px;
+      width:2px; height:120px;
       background:linear-gradient(white, transparent);
       animation:shoot 2s linear forwards;
+      pointer-events:none;
     }
     @keyframes shoot {
       from { transform:translate(0,0) rotate(45deg); opacity:1; }
-      to { transform:translate(600px,600px) rotate(45deg); opacity:0; }
+      to { transform:translate(700px,700px) rotate(45deg); opacity:0; }
     }
   </style>
 </head>
@@ -71,34 +83,49 @@
 
   <canvas id="sky"></canvas>
 
-  <!-- Example stars with pictures -->
-  <div class="star" style="top:20%; left:30%;" onclick="showMemory('memory1')"></div>
-  <div class="star" style="top:40%; left:60%;" onclick="showMemory('memory2')"></div>
-  <div class="star" style="top:70%; left:20%;" onclick="showMemory('memory3')"></div>
-  <div class="star" style="top:55%; left:75%;" onclick="showMemory('memory4')"></div>
-  <div class="star" style="top:30%; left:50%;" onclick="showMemory('memory5')"></div>
+  <!-- 20 Stars -->
+  <div class="star" style="top:15%; left:20%;" onclick="showMemory('memory1')"></div>
+  <div class="star" style="top:25%; left:40%;" onclick="showMemory('memory2')"></div>
+  <div class="star" style="top:35%; left:70%;" onclick="showMemory('memory3')"></div>
+  <div class="star" style="top:50%; left:10%;" onclick="showMemory('memory4')"></div>
+  <div class="star" style="top:60%; left:30%;" onclick="showMemory('memory5')"></div>
+  <div class="star" style="top:75%; left:50%;" onclick="showMemory('memory6')"></div>
+  <div class="star" style="top:20%; left:80%;" onclick="showMemory('memory7')"></div>
+  <div class="star" style="top:40%; left:90%;" onclick="showMemory('memory8')"></div>
+  <div class="star" style="top:65%; left:70%;" onclick="showMemory('memory9')"></div>
+  <div class="star" style="top:85%; left:20%;" onclick="showMemory('memory10')"></div>
+  <div class="star" style="top:10%; left:60%;" onclick="showMemory('memory11')"></div>
+  <div class="star" style="top:30%; left:15%;" onclick="showMemory('memory12')"></div>
+  <div class="star" style="top:55%; left:45%;" onclick="showMemory('memory13')"></div>
+  <div class="star" style="top:70%; left:85%;" onclick="showMemory('memory14')"></div>
+  <div class="star" style="top:90%; left:60%;" onclick="showMemory('memory15')"></div>
+  <div class="star" style="top:12%; left:35%;" onclick="showMemory('memory16')"></div>
+  <div class="star" style="top:28%; left:55%;" onclick="showMemory('memory17')"></div>
+  <div class="star" style="top:48%; left:75%;" onclick="showMemory('memory18')"></div>
+  <div class="star" style="top:68%; left:25%;" onclick="showMemory('memory19')"></div>
+  <div class="star" style="top:88%; left:45%;" onclick="showMemory('memory20')"></div>
 
-  <!-- Memory popups -->
-  <div id="memory1" class="memory">
-    <img src="images/memory1.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;">
-    Our first late-night call 🌙
-  </div>
-  <div id="memory2" class="memory">
-    <img src="images/memory2.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;">
-    The day you made me laugh endlessly 💫
-  </div>
-  <div id="memory3" class="memory">
-    <img src="images/memory3.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;">
-    That surprise message that lit up my day ✨
-  </div>
-  <div id="memory4" class="memory">
-    <img src="images/memory4.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;">
-    Our shared playlist moment 🎶
-  </div>
-  <div id="memory5" class="memory">
-    <img src="images/memory5.jpg" style="width:100%; border-radius:10px; margin-bottom:15px;">
-    The promise we made under the stars ❤️
-  </div>
+  <!-- Memory Popups -->
+  <div id="memory1" class="memory"><img src="images/memory1.jpg">Our first late-night call 🌙</div>
+  <div id="memory2" class="memory"><img src="images/memory2.jpg">The day you made me laugh endlessly 💫</div>
+  <div id="memory3" class="memory"><img src="images/memory3.jpg">That surprise message that lit up my day ✨</div>
+  <div id="memory4" class="memory"><img src="images/memory4.jpg">Our shared playlist moment 🎶</div>
+  <div id="memory5" class="memory"><img src="images/memory5.jpg">The promise we made under the stars ❤️</div>
+  <div id="memory6" class="memory"><img src="images/memory6.jpg">The day you said forever 💕</div>
+  <div id="memory7" class="memory"><img src="images/memory7.jpg">Our silly jokes that never end 😂</div>
+  <div id="memory8" class="memory"><img src="images/memory8.jpg">The first gift you sent 🎁</div>
+  <div id="memory9" class="memory"><img src="images/memory9.jpg">Our movie night together 🍿</div>
+  <div id="memory10" class="memory"><img src="images/memory10.jpg">The time you surprised me 🌸</div>
+  <div id="memory11" class="memory"><img src="images/memory11.jpg">Our endless chats 📱</div>
+  <div id="memory12" class="memory"><img src="images/memory12.jpg">The day you made me blush 🌹</div>
+  <div id="memory13" class="memory"><img src="images/memory13.jpg">Our shared dreams ✨</div>
+  <div id="memory14" class="memory"><img src="images/memory14.jpg">The night we stayed up talking 🌙</div>
+  <div id="memory15" class="memory"><img src="images/memory15.jpg">The moment I knew ❤️</div>
+  <div id="memory16" class="memory"><img src="images/memory16.jpg">Our laughter echoing forever 💫</div>
+  <div id="memory17" class="memory"><img src="images/memory17.jpg">The day you said yes 💍</div>
+  <div id="memory18" class="memory"><img src="images/memory18.jpg">Our secret notes 💌</div>
+  <div id="memory19" class="memory"><img src="images/memory19.jpg">The hug I’ll never forget 🤗</div>
+  <div id="memory20" class="memory"><img src="images/memory20.jpg">Our forever promise 🌟</div>
 
   <script>
     // Starry background
@@ -108,7 +135,7 @@
     canvas.height = window.innerHeight;
 
     let stars = [];
-    for(let i=0;i<1000;i++){ // thousands of stars
+    for(let i=0;i<2000;i++){ // thousands of stars
       stars.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
@@ -119,41 +146,4 @@
     function drawStars(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       ctx.fillStyle="white";
-      for(let i=0;i<stars.length;i++){
-        ctx.beginPath();
-        ctx.arc(stars[i].x,stars[i].y,stars[i].r,0,Math.PI*2,true);
-        ctx.fill();
-      }
-    }
-
-    function twinkle(){
-      for(let i=0;i<stars.length;i++){
-        stars[i].r = Math.random()*1.5;
-      }
-    }
-
-    setInterval(drawStars,50);
-    setInterval(twinkle,1000);
-
-    // Shooting stars
-    function createShootingStar(){
-      const star=document.createElement('div');
-      star.className='shooting-star';
-      star.style.top=Math.random()*window.innerHeight+'px';
-      star.style.left=Math.random()*window.innerWidth+'px';
-      document.body.appendChild(star);
-      setTimeout(()=>star.remove(),2000);
-    }
-    setInterval(createShootingStar,4000);
-
-    // Memory popups
-    let currentMemory=null;
-    function showMemory(id){
-      if(currentMemory){ document.getElementById(currentMemory).style.display='none'; }
-      document.getElementById(id).style.display='block';
-      currentMemory=id;
-    }
-  </script>
-
-</body>
-</html>
+      for(let i=0
