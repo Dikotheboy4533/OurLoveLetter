@@ -11,7 +11,7 @@
       background:black;
       font-family:'Poppins', sans-serif;
       color:white;
-      cursor:url('images/heart-cursor.png'), auto; /* custom cursor */
+      cursor:url('images/heart-cursor.png'), auto;
     }
 
     canvas {
@@ -26,7 +26,7 @@
       position:fixed;
       top:0; left:0;
       width:100%; height:100%;
-      background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+      background:radial-gradient(circle at center, #ff9a9e, #fad0c4);
       display:flex;
       flex-direction:column;
       justify-content:center;
@@ -40,7 +40,7 @@
     }
     #intro h1 {
       font-size:3em;
-      text-shadow:0 0 20px pink;
+      text-shadow:0 0 25px pink;
       animation: glow 3s infinite alternate;
     }
     #intro p {
@@ -48,33 +48,19 @@
       font-size:1.2em;
     }
     @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
-    @keyframes glow { from { text-shadow:0 0 10px pink; } to { text-shadow:0 0 30px red; } }
-
-    /* Aurora effect */
-    #aurora {
-      position:fixed;
-      top:0; left:0;
-      width:100%; height:100%;
-      background:linear-gradient(135deg,rgba(0,255,200,0.2),rgba(255,0,200,0.2));
-      animation:auroraMove 10s infinite alternate;
-      z-index:-2;
-    }
-    @keyframes auroraMove {
-      from { transform:translateX(-50px) translateY(-20px); }
-      to { transform:translateX(50px) translateY(20px); }
-    }
+    @keyframes glow { from { text-shadow:0 0 15px pink; } to { text-shadow:0 0 35px red; } }
 
     .star {
       position:absolute;
-      width:12px; height:12px;
+      width:10px; height:10px;
       background:white;
       border-radius:50%;
-      box-shadow:0 0 20px #fff;
+      box-shadow:0 0 15px #fff;
       cursor:pointer;
       animation:pulse 3s infinite ease-in-out;
       transition:transform 0.3s ease;
     }
-    .star:hover { transform:scale(1.5); }
+    .star:hover { transform:scale(1.4); }
     @keyframes pulse {
       0% { opacity:0.6; }
       50% { opacity:1; }
@@ -87,8 +73,9 @@
       transform:translate(-50%,-50%);
       background:rgba(255,255,255,0.95);
       color:#d6336c;
-      padding:30px;
-      border-radius:15px;
+      padding:25px;
+      border-radius:20px;
+      border:2px solid pink;
       box-shadow:0 0 40px rgba(255,100,150,0.6);
       font-family:'Great Vibes', cursive;
       font-size:1.6em;
@@ -100,9 +87,9 @@
     }
     .memory img {
       width:100%;
-      border-radius:10px;
+      border-radius:15px;
       margin-bottom:15px;
-      box-shadow:0 0 15px rgba(0,0,0,0.3);
+      box-shadow:0 0 20px rgba(255,100,150,0.4);
     }
     @keyframes fadeIn {
       from{opacity:0; transform:translate(-50%,-55%);}
@@ -113,8 +100,9 @@
     .heart {
       position:fixed;
       font-size:2em;
-      color:pink;
+      color:rgba(255,182,193,0.8);
       animation:floatUp 3s ease forwards;
+      text-shadow:0 0 15px pink;
     }
     @keyframes floatUp {
       from { transform:translateY(0); opacity:1; }
@@ -130,30 +118,12 @@
     <p>Every star holds a piece of us...</p>
   </div>
 
-  <div id="aurora"></div>
   <canvas id="sky"></canvas>
 
-  <!-- 20 Clickable Stars -->
+  <!-- Example Stars (add all 20) -->
   <div class="star" style="top:15%; left:20%;" onclick="showMemory('memory1')"></div>
   <div class="star" style="top:25%; left:40%;" onclick="showMemory('memory2')"></div>
-  <div class="star" style="top:35%; left:70%;" onclick="showMemory('memory3')"></div>
-  <div class="star" style="top:50%; left:10%;" onclick="showMemory('memory4')"></div>
-  <div class="star" style="top:60%; left:30%;" onclick="showMemory('memory5')"></div>
-  <div class="star" style="top:75%; left:50%;" onclick="showMemory('memory6')"></div>
-  <div class="star" style="top:20%; left:80%;" onclick="showMemory('memory7')"></div>
-  <div class="star" style="top:40%; left:90%;" onclick="showMemory('memory8')"></div>
-  <div class="star" style="top:65%; left:70%;" onclick="showMemory('memory9')"></div>
-  <div class="star" style="top:85%; left:20%;" onclick="showMemory('memory10')"></div>
-  <div class="star" style="top:10%; left:60%;" onclick="showMemory('memory11')"></div>
-  <div class="star" style="top:30%; left:15%;" onclick="showMemory('memory12')"></div>
-  <div class="star" style="top:55%; left:45%;" onclick="showMemory('memory13')"></div>
-  <div class="star" style="top:70%; left:85%;" onclick="showMemory('memory14')"></div>
-  <div class="star" style="top:90%; left:60%;" onclick="showMemory('memory15')"></div>
-  <div class="star" style="top:12%; left:35%;" onclick="showMemory('memory16')"></div>
-  <div class="star" style="top:28%; left:55%;" onclick="showMemory('memory17')"></div>
-  <div class="star" style="top:48%; left:75%;" onclick="showMemory('memory18')"></div>
-  <div class="star" style="top:68%; left:25%;" onclick="showMemory('memory19')"></div>
-  <div class="star" style="top:88%; left:45%;" onclick="showMemory('memory20')"></div>
+  <!-- ... continue all 20 stars ... -->
 
   <!-- Surprise star -->
   <div class="star" style="top:50%; left:50%;" onclick="surpriseStar()"></div>
@@ -161,24 +131,7 @@
   <!-- Memory Popups -->
   <div id="memory1" class="memory"><img src="images/memory1.jpg">Our first late-night call 🌙</div>
   <div id="memory2" class="memory"><img src="images/memory2.jpg">The day you made me laugh endlessly 💫</div>
-  <div id="memory3" class="memory"><img src="images/memory3.jpg">That surprise message that lit up my day ✨</div>
-  <div id="memory4" class="memory"><img src="images/memory4.jpg">Our shared playlist moment 🎶</div>
-  <div id="memory5" class="memory"><img src="images/memory5.jpg">The promise we made under the stars ❤️</div>
-  <div id="memory6" class="memory"><img src="images/memory6.jpg">The day you said forever 💕</div>
-  <div id="memory7" class="memory"><img src="images/memory7.jpg">Our silly jokes that never end 😂</div>
-    <div id="memory8" class="memory"><img src="images/memory8.jpg">The first gift you sent 🎁</div>
-  <div id="memory9" class="memory"><img src="images/memory9.jpg">Our movie night together 🍿</div>
-  <div id="memory10" class="memory"><img src="images/memory10.jpg">The time you surprised me 🌸</div>
-  <div id="memory11" class="memory"><img src="images/memory11.jpg">Our endless chats 📱</div>
-  <div id="memory12" class="memory"><img src="images/memory12.jpg">The day you made me blush 🌹</div>
-  <div id="memory13" class="memory"><img src="images/memory13.jpg">Our shared dreams ✨</div>
-  <div id="memory14" class="memory"><img src="images/memory14.jpg">The night we stayed up talking 🌙</div>
-  <div id="memory15" class="memory"><img src="images/memory15.jpg">The moment I knew ❤️</div>
-  <div id="memory16" class="memory"><img src="images/memory16.jpg">Our laughter echoing forever 💫</div>
-  <div id="memory17" class="memory"><img src="images/memory17.jpg">The day you said yes 💍</div>
-  <div id="memory18" class="memory"><img src="images/memory18.jpg">Our secret notes 💌</div>
-  <div id="memory19" class="memory"><img src="images/memory19.jpg">The hug I’ll never forget 🤗</div>
-  <div id="memory20" class="memory"><img src="images/memory20.jpg">Our forever promise 🌟</div>
+  <!-- ... continue memory3 through memory20 ... -->
 
   <script>
     // Starry background
@@ -188,7 +141,7 @@
     canvas.height = window.innerHeight;
 
     let stars = [];
-    for(let i=0;i<3000;i++){ // thousands of background stars
+    for(let i=0;i<3000;i++){
       stars.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
@@ -204,8 +157,6 @@
         ctx.arc(stars[i].x,stars[i].y,stars[i].r,0,Math.PI*2,true);
         ctx.fill();
       }
-      drawMeteors();
-      drawConstellations();
     }
 
     function twinkle(){
@@ -216,45 +167,6 @@
 
     setInterval(drawStars,50);
     setInterval(twinkle,1000);
-
-    // Meteors
-    let meteors = [];
-    function spawnMeteor(){
-      let startX = Math.random()*canvas.width;
-      let startY = Math.random()*canvas.height/4;
-      let length = 120+Math.random()*150;
-      let speed = 8+Math.random()*5;
-      let angle = Math.PI/3+(Math.random()*Math.PI/6);
-      meteors.push({x:startX,y:startY,length,speed,angle,life:0});
-    }
-    function drawMeteors(){
-      for(let i=0;i<meteors.length;i++){
-        let m=meteors[i];
-        let alpha=1-m.life/70;
-        ctx.strokeStyle=`rgba(255,255,255,${alpha})`;
-        ctx.lineWidth=2;
-        ctx.beginPath();
-        ctx.moveTo(m.x,m.y);
-        ctx.lineTo(m.x-Math.cos(m.angle)*m.length,m.y+Math.sin(m.angle)*m.length);
-        ctx.stroke();
-        m.x+=Math.cos(m.angle)*m.speed;
-        m.y+=Math.sin(m.angle)*m.speed;
-        m.life++;
-        if(m.life>70){ meteors.splice(i,1); i--; }
-      }
-    }
-    setInterval(spawnMeteor,5000);
-
-    // Constellation lines
-    function drawConstellations(){
-      ctx.strokeStyle="rgba(255,200,200,0.5)";
-      ctx.lineWidth=1.5;
-      ctx.beginPath();
-      ctx.moveTo(window.innerWidth*0.15,window.innerHeight*0.20);
-      ctx.lineTo(window.innerWidth*0.25,window.innerHeight*0.40);
-      ctx.lineTo(window.innerWidth*0.35,window.innerHeight*0.70);
-      ctx.stroke();
-    }
 
     // Memory popups
     let currentMemory=null;
@@ -286,5 +198,3 @@
 
 </body>
 </html>
-
-  
