@@ -20,6 +20,35 @@
       z-index:-1;
     }
 
+    /* Intro Splash */
+    #intro {
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      font-family:'Great Vibes', cursive;
+      font-size:2em;
+      z-index:9999;
+      animation: fadeOut 4s ease forwards;
+      animation-delay:3s;
+    }
+    #intro h1 {
+      font-size:3em;
+      text-shadow:0 0 20px pink;
+      animation: glow 3s infinite alternate;
+    }
+    #intro p {
+      margin-top:20px;
+      font-size:1.2em;
+    }
+    @keyframes fadeOut { to { opacity:0; visibility:hidden; } }
+    @keyframes glow { from { text-shadow:0 0 10px pink; } to { text-shadow:0 0 30px red; } }
+
     .star {
       position:absolute;
       width:12px; height:12px;
@@ -81,6 +110,12 @@
 </head>
 <body>
 
+  <!-- Intro Splash -->
+  <div id="intro">
+    <h1>🌌 Our Constellation of Memories 🌌</h1>
+    <p>Every star holds a piece of us...</p>
+  </div>
+
   <canvas id="sky"></canvas>
 
   <!-- 20 Clickable Stars -->
@@ -121,7 +156,7 @@
   <div id="memory13" class="memory"><img src="images/memory13.jpg">Our shared dreams ✨</div>
   <div id="memory14" class="memory"><img src="images/memory14.jpg">The night we stayed up talking 🌙</div>
   <div id="memory15" class="memory"><img src="images/memory15.jpg">The moment I knew ❤️</div>
-  <div id="memory16" class="memory"><img src="images/memory16.jpg">Our laughter echoing forever 💫</div>
+    <div id="memory16" class="memory"><img src="images/memory16.jpg">Our laughter echoing forever 💫</div>
   <div id="memory17" class="memory"><img src="images/memory17.jpg">The day you said yes 💍</div>
   <div id="memory18" class="memory"><img src="images/memory18.jpg">Our secret notes 💌</div>
   <div id="memory19" class="memory"><img src="images/memory19.jpg">The hug I’ll never forget 🤗</div>
@@ -143,7 +178,7 @@
       });
     }
 
-        function drawStars(){
+    function drawStars(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       ctx.fillStyle="white";
       for(let i=0;i<stars.length;i++){
