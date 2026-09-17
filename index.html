@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1144,96 +1143,98 @@ body {
    MEMORY DATA
 ========================================================= */
 
+// Put your photos in the "images" folder next to this HTML file.
+// Example: images/beginning.jpg, images/love.jpg, images/call.jpg, etc.
 const memories = [
 
     {
         title: "The Beginning",
         text: "27/08/26 - The day our story began..",
-        art: "images/beginning"
+        image: "images/beginning.jpg"
     },
 
     {
         title: "The Love",
         text: "We felt connected from day one..",
-        art: "images/love.jpg"
+        image: "images/love.jpg"
     },
 
     {
         title: "Our Calls",
         text: "Where we enjoyed every moment together..",
-        art: "images/call.jpg"
+        image: "images/call.jpg"
     },
 
     {
         title: "The Little things",
         text: "The tiny things between us, and how similar we are..",
-        art: "images/little.jpg"
+        image: "images/little.jpg"
     },
 
     {
         title: "Day we met",
-        text: "You sent a pic of u in the gc after enjoying yourself at a bday party, I commented on it saying "Oooh pretty"",
-        art: "images/met.jpg"
+        text: 'You sent a pic of u in the gc after enjoying yourself at a bday party, I commented on it saying "Oooh pretty".',
+        image: "images/met.jpg"
     },
 
     {
         title: "The fun",
         text: "Beautiful moments where we enjoyed each others presence",
-        art: "images/fun.jpg"
+        image: "images/fun.jpg"
     },
 
     {
         title: "Our playfullness",
         text: "Our freakiness and playfulness.",
-        art: "iamges/playful.jpg"
+        image: "images/playful.jpg"
     },
 
     {
         title: "When it clicked",
         text: "When every thing seemed to fall in place..",
-        art: "images/click.jpg"
+        image: "images/click.jpg"
     },
 
     {
         title: "The Obstacles",
         text: "The problems with our parents",
-        art: "images/obstacles.jpg"
+        image: "images/obstacles.jpg"
     },
    
     {
         title: "My Favorite person",
         text: "Through everything, you stayed..",
-        art: "images/favorite.jpg"
+        image: "images/favorite.jpg"
     },
 
     {
         title: "The Future",
         text: "To a future together..",
-        art: "images/future.jpg"
+        image: "images/future.jpg"
     },
 
     {
         title: "My Safe place",
         text: "In you, I found my peace..",
-        art: "safe"
+        image: "images/safe.jpg"
     },
 
     {
         title: "A Thousand Little Reasons",
         text: "I could list a million reasons I love you and the million things I love about you..",
-        art: "reasons"
+        image: "images/reasons.jpg"
     },
 
     {
         title: "Almost Forever",
         text: "Just three weeks, yet feels like we've known each other for a lifetime...",
-        art: "forever"
+        image: "images/forever.jpg"
     },
 
     {
         title: "Music",
         text: "They say, music is a form of love. Well, now I know what they meant..",
-        art: "images/music.jpg"
+        image: "images/music.jpg"
     }
 
 ];
@@ -1589,7 +1590,7 @@ const positions = [
    CREATE MEMORY STARS
 ========================================================= */
 
-positions.forEach(
+positions.slice(0, memories.length).forEach(
     (position, index) => {
 
         const star =
@@ -2348,17 +2349,16 @@ function openMemory(index) {
     const memory =
         memories[index];
 
+    if (!memory) return;
+
     memoryImage.src =
-        svgImage(
-            memory.art,
-            index
-        );
+        memory.image;
 
     memoryImage.alt =
         memory.title;
 
     memoryNumber.textContent =
-        `Memory ${String(index + 1).padStart(2, "0")} · 20`;
+        `Memory ${String(index + 1).padStart(2, "0")} · ${memories.length}`;
 
     memoryTitle.textContent =
         memory.title;
@@ -2556,4 +2556,3 @@ window.addEventListener(
 
 </body>
 </html>
-```
