@@ -29,6 +29,7 @@ body {
 body {
     background: #050713;
     color: white;
+
     font-family:
         Inter,
         "Segoe UI",
@@ -36,6 +37,8 @@ body {
         -apple-system,
         BlinkMacSystemFont,
         sans-serif;
+
+    cursor: none;
 }
 
 
@@ -46,6 +49,7 @@ body {
 .intro {
     position: fixed;
     inset: 0;
+
     z-index: 1000;
 
     display: flex;
@@ -55,19 +59,19 @@ body {
     background:
         radial-gradient(
             circle at 50% 48%,
-            rgba(139, 93, 255, 0.18),
+            rgba(150, 90, 255, 0.22),
             transparent 32%
         ),
         linear-gradient(
             135deg,
             #030714 0%,
-            #0a0b2a 48%,
-            #21104a 100%
+            #0b0c2c 48%,
+            #261052 100%
         );
 
     transition:
-        opacity 1.6s ease,
-        visibility 1.6s ease;
+        opacity 1.5s ease,
+        visibility 1.5s ease;
 }
 
 .intro.hidden {
@@ -81,17 +85,18 @@ body {
     padding: 30px;
 
     animation:
-        introAppear 1.6s cubic-bezier(.2,.8,.2,1);
+        introAppear 1.5s cubic-bezier(.2,.8,.2,1);
 }
 
 .intro-small {
+    margin-bottom: 20px;
+
     font-size: 11px;
     letter-spacing: .42em;
     text-transform: uppercase;
 
-    color: rgba(255,255,255,.62);
-
-    margin-bottom: 20px;
+    color:
+        rgba(255,255,255,.6);
 }
 
 .intro-title {
@@ -100,20 +105,20 @@ body {
         "Times New Roman",
         serif;
 
-    font-weight: 400;
-
     font-size:
         clamp(42px, 8vw, 88px);
+
+    font-weight: 400;
 
     line-height: 1;
 
     background:
         linear-gradient(
             120deg,
-            #fff,
-            #e9d9ff 42%,
-            #c5a5ff 72%,
-            #fff
+            #ffffff,
+            #f1dcff 40%,
+            #c7a7ff 75%,
+            #ffffff
         );
 
     -webkit-background-clip: text;
@@ -123,10 +128,10 @@ body {
 
     filter:
         drop-shadow(
-            0 0 18px rgba(197,165,255,.45)
+            0 0 18px rgba(197,165,255,.42)
         )
         drop-shadow(
-            0 0 45px rgba(134,89,255,.25)
+            0 0 42px rgba(134,89,255,.22)
         );
 }
 
@@ -138,27 +143,30 @@ body {
     font-size: 17px;
     font-style: italic;
 
-    color: rgba(255,255,255,.68);
+    color:
+        rgba(255,255,255,.68);
 }
 
 .intro-heart {
     position: relative;
 
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
 
     margin: 30px auto 0;
 
-    transform: rotate(45deg);
+    background:
+        #ffd5ee;
 
-    background: #ffd8f3;
+    transform:
+        rotate(45deg);
 
     box-shadow:
-        0 0 15px #ffb8e5,
-        0 0 40px rgba(255,150,221,.8);
+        0 0 13px #ffd0ed,
+        0 0 28px rgba(255,130,210,.75);
 
     animation:
-        heartbeat 1.8s ease-in-out infinite;
+        heartbeat 1.9s ease-in-out infinite;
 }
 
 .intro-heart::before,
@@ -167,8 +175,8 @@ body {
 
     position: absolute;
 
-    width: 10px;
-    height: 10px;
+    width: 11px;
+    height: 11px;
 
     border-radius: 50%;
 
@@ -176,17 +184,17 @@ body {
 }
 
 .intro-heart::before {
-    left: -5px;
+    left: -5.5px;
 }
 
 .intro-heart::after {
-    top: -5px;
+    top: -5.5px;
 }
 
 @keyframes introAppear {
-
     from {
         opacity: 0;
+
         transform:
             translateY(20px)
             scale(.97);
@@ -194,6 +202,7 @@ body {
 
     to {
         opacity: 1;
+
         transform:
             translateY(0)
             scale(1);
@@ -201,7 +210,6 @@ body {
 }
 
 @keyframes heartbeat {
-
     0%, 100% {
         transform:
             rotate(45deg)
@@ -211,7 +219,7 @@ body {
     50% {
         transform:
             rotate(45deg)
-            scale(1.3);
+            scale(1.28);
     }
 }
 
@@ -229,24 +237,26 @@ body {
     background:
         radial-gradient(
             ellipse at 50% 110%,
-            rgba(54,31,116,.22),
+            rgba(54,31,116,.24),
             transparent 55%
         ),
         radial-gradient(
-            ellipse at 10% 20%,
-            rgba(48,56,137,.08),
-            transparent 45%
+            ellipse at 12% 15%,
+            rgba(60,74,160,.07),
+            transparent 44%
+        ),
+        radial-gradient(
+            ellipse at 90% 22%,
+            rgba(130,67,170,.07),
+            transparent 40%
         ),
         #050713;
 }
 
 
-/*
-   IMPORTANT PERFORMANCE CHANGE:
-
-   Instead of 1,700 HTML elements, all background
-   stars are rendered into ONE canvas.
-*/
+/* =========================================================
+   CANVAS STARS
+========================================================= */
 
 #starCanvas {
     position: absolute;
@@ -256,6 +266,8 @@ body {
     height: 100%;
 
     display: block;
+
+    pointer-events: none;
 }
 
 
@@ -266,7 +278,7 @@ body {
 .sky-title {
     position: absolute;
 
-    top: 30px;
+    top: 28px;
     left: 50%;
 
     transform:
@@ -288,7 +300,7 @@ body {
         serif;
 
     font-size:
-        clamp(22px, 4vw, 35px);
+        clamp(22px, 4vw, 36px);
 
     font-weight: 400;
 
@@ -296,8 +308,7 @@ body {
         rgba(255,255,255,.9);
 
     text-shadow:
-        0 0 18px
-        rgba(203,164,255,.35);
+        0 0 18px rgba(203,164,255,.3);
 }
 
 .sky-title-sub {
@@ -310,19 +321,19 @@ body {
     letter-spacing: .42em;
 
     color:
-        rgba(255,255,255,.36);
+        rgba(255,255,255,.34);
 }
 
 
 /* =========================================================
-   INTERACTIVE STARS
+   MEMORY STARS
 ========================================================= */
 
 .interactive-star {
     position: absolute;
 
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
 
     transform:
         translate(-50%, -50%);
@@ -331,7 +342,7 @@ body {
 
     background: transparent;
 
-    cursor: pointer;
+    cursor: none;
 
     z-index: 20;
 
@@ -356,17 +367,17 @@ body {
     background:
         radial-gradient(
             circle,
-            #fff 0%,
-            #f4e7ff 35%,
-            #c6a2ff 70%,
+            #ffffff 0%,
+            #f6e8ff 30%,
+            #c9a7ff 70%,
             transparent 100%
         );
 
     box-shadow:
         0 0 5px #fff,
         0 0 12px #d9baff,
-        0 0 25px rgba(165,118,255,.85),
-        0 0 42px rgba(125,76,255,.45);
+        0 0 24px rgba(165,118,255,.8),
+        0 0 40px rgba(125,76,255,.38);
 
     animation:
         starPulse var(--pulse)
@@ -381,8 +392,8 @@ body {
 
     position: absolute;
 
-    width: 27px;
-    height: 27px;
+    width: 29px;
+    height: 29px;
 
     opacity: .4;
 
@@ -390,17 +401,17 @@ body {
         linear-gradient(
             90deg,
             transparent 47%,
-            rgba(220,194,255,.8) 50%,
+            rgba(220,194,255,.9) 50%,
             transparent 53%
         ),
         linear-gradient(
             0deg,
             transparent 47%,
-            rgba(220,194,255,.8) 50%,
+            rgba(220,194,255,.9) 50%,
             transparent 53%
         );
 
-    filter: blur(.5px);
+    filter: blur(.4px);
 
     animation:
         starPulse var(--pulse)
@@ -413,73 +424,112 @@ body {
 .interactive-star:hover {
     transform:
         translate(-50%, -50%)
-        scale(1.35);
+        scale(1.32);
 }
 
 @keyframes starPulse {
-
     0%, 100% {
         opacity: .65;
-        filter: brightness(.9);
+
+        filter:
+            brightness(.95);
     }
 
     50% {
         opacity: 1;
-        filter: brightness(1.45);
+
+        filter:
+            brightness(1.45);
     }
 }
 
 
 /* =========================================================
-   SURPRISE STAR
+   CENTER SURPRISE STAR
 ========================================================= */
 
 .surprise-star {
-    width: 60px;
-    height: 60px;
+    left: 50% !important;
+    top: 50% !important;
+
+    width: 72px;
+    height: 72px;
 
     z-index: 30;
+
+    transform:
+        translate(-50%, -50%);
 }
 
 .surprise-star::before {
-    width: 14px;
-    height: 14px;
+    width: 17px;
+    height: 17px;
 
     background:
         radial-gradient(
             circle,
-            #fff 0%,
-            #ffeafa 25%,
-            #ffb7e2 55%,
-            #d275ff 78%,
+            #ffffff 0%,
+            #fff0fb 24%,
+            #ffb8e2 50%,
+            #d780ff 78%,
             transparent 100%
         );
 
     box-shadow:
-        0 0 8px #fff,
-        0 0 20px #ffd2f1,
-        0 0 42px #e38cff,
-        0 0 75px rgba(185,86,255,.7);
+        0 0 7px #fff,
+        0 0 16px #ffd7f2,
+        0 0 34px #e797ff,
+        0 0 58px rgba(197,96,255,.55);
 
     animation:
-        surprisePulse 2.2s ease-in-out infinite;
+        centerPulse 2.5s ease-in-out infinite;
 }
 
 .surprise-star::after {
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
 
     opacity: .6;
+
+    animation:
+        centerRayPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes surprisePulse {
+.surprise-star:hover {
+    transform:
+        translate(-50%, -50%)
+        scale(1.18);
+}
 
+@keyframes centerPulse {
     0%, 100% {
-        transform: scale(.9);
+        transform:
+            scale(.92);
+
+        opacity: .8;
     }
 
     50% {
-        transform: scale(1.25);
+        transform:
+            scale(1.28);
+
+        opacity: 1;
+    }
+}
+
+@keyframes centerRayPulse {
+    0%, 100% {
+        opacity: .32;
+
+        transform:
+            scale(.9);
+    }
+
+    50% {
+        opacity: .72;
+
+        transform:
+            scale(1.18);
     }
 }
 
@@ -492,17 +542,19 @@ body {
     position: absolute;
 
     left: 50%;
-    top: calc(50% + 48px);
+    top: calc(50% + 66px);
 
     transform:
         translateX(-50%);
 
     z-index: 10;
 
-    font-family: Georgia, serif;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    font-size: 13px;
-
+    font-size: 12px;
     font-style: italic;
 
     letter-spacing: .08em;
@@ -513,11 +565,102 @@ body {
     pointer-events: none;
 
     transition:
-        opacity .7s ease;
+        opacity .7s ease,
+        transform .7s ease;
 }
 
 .center-hint.hidden {
     opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(5px);
+}
+
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+#customCursor {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 22px;
+    height: 22px;
+
+    z-index: 5000;
+
+    pointer-events: none;
+
+    transform:
+        translate(-50%, -50%);
+
+    will-change: transform, left, top;
+
+    transition:
+        width .16s ease,
+        height .16s ease,
+        filter .16s ease;
+}
+
+.cursor-heart {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 13px;
+    height: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #ffc2e8 55%,
+            #cf8cff
+        );
+
+    transform:
+        translate(-50%, -50%)
+        rotate(45deg);
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.9),
+        0 0 14px rgba(255,154,222,.75),
+        0 0 22px rgba(174,103,255,.5);
+}
+
+.cursor-heart::before,
+.cursor-heart::after {
+    content: "";
+
+    position: absolute;
+
+    width: 13px;
+    height: 13px;
+
+    background: inherit;
+
+    border-radius: 50%;
+}
+
+.cursor-heart::before {
+    left: -6.5px;
+}
+
+.cursor-heart::after {
+    top: -6.5px;
+}
+
+#customCursor.active {
+    width: 30px;
+    height: 30px;
+
+    filter:
+        brightness(1.3);
 }
 
 
@@ -528,21 +671,27 @@ body {
 .heart-particle {
     position: fixed;
 
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
 
-    background: #ffbde9;
-
-    transform: rotate(45deg);
+    z-index: 200;
 
     pointer-events: none;
 
-    z-index: 100;
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #ffbce5 50%,
+            #d98dff
+        );
+
+    transform:
+        rotate(45deg);
 
     box-shadow:
-        0 0 8px #fff,
-        0 0 18px #ff8fd6,
-        0 0 30px rgba(222,111,255,.7);
+        0 0 6px rgba(255,255,255,.8),
+        0 0 14px rgba(255,144,214,.7);
 
     animation:
         heartFloat
@@ -557,8 +706,8 @@ body {
 
     position: absolute;
 
-    width: 12px;
-    height: 12px;
+    width: 11px;
+    height: 11px;
 
     border-radius: 50%;
 
@@ -566,22 +715,21 @@ body {
 }
 
 .heart-particle::before {
-    left: -6px;
+    left: -5.5px;
 }
 
 .heart-particle::after {
-    top: -6px;
+    top: -5.5px;
 }
 
 @keyframes heartFloat {
-
     0% {
         opacity: 0;
 
         transform:
-            translate(0, 20px)
+            translate(0, 10px)
             rotate(45deg)
-            scale(.45);
+            scale(.5);
     }
 
     12% {
@@ -603,14 +751,14 @@ body {
 
 
 /* =========================================================
-   MEMORY OVERLAY
+   MEMORY POPUP
 ========================================================= */
 
 .memory-overlay {
     position: fixed;
     inset: 0;
 
-    z-index: 500;
+    z-index: 600;
 
     display: flex;
     align-items: center;
@@ -619,13 +767,13 @@ body {
     padding: 24px;
 
     background:
-        rgba(2,3,13,.58);
+        rgba(2,3,13,.56);
 
     backdrop-filter:
-        blur(8px);
+        blur(6px);
 
     -webkit-backdrop-filter:
-        blur(8px);
+        blur(6px);
 
     opacity: 0;
     visibility: hidden;
@@ -646,7 +794,8 @@ body {
     width:
         min(720px, 94vw);
 
-    max-height: 90vh;
+    max-height:
+        90vh;
 
     overflow: auto;
 
@@ -655,28 +804,30 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(27,22,53,.97),
-            rgba(10,10,27,.98)
+            rgba(28,22,54,.97),
+            rgba(9,10,27,.98)
         );
 
     border:
         1px solid
-        rgba(220,190,255,.25);
+        rgba(220,190,255,.22);
 
     box-shadow:
         0 30px 90px rgba(0,0,0,.65),
-        0 0 55px rgba(136,80,255,.18),
+        0 0 46px rgba(136,80,255,.15),
         inset
         0 1px 0
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.07);
 
     transform:
-        translateY(20px)
+        translateY(22px)
         scale(.96);
 
+    opacity: .6;
+
     transition:
-        transform .45s
-        cubic-bezier(.2,.8,.2,1);
+        transform .45s cubic-bezier(.2,.8,.2,1),
+        opacity .45s ease;
 }
 
 .memory-overlay.open
@@ -684,6 +835,8 @@ body {
     transform:
         translateY(0)
         scale(1);
+
+    opacity: 1;
 }
 
 .memory-image {
@@ -706,6 +859,8 @@ body {
 }
 
 .memory-number {
+    margin-bottom: 13px;
+
     font-size: 10px;
 
     letter-spacing: .3em;
@@ -714,26 +869,25 @@ body {
 
     color:
         #c7a8ff;
-
-    margin-bottom: 13px;
 }
 
 .memory-title {
+    margin-bottom: 17px;
+
     font-family:
         Georgia,
         "Times New Roman",
         serif;
 
-    font-weight: 400;
-
     font-size:
         clamp(27px, 5vw, 42px);
 
+    font-weight: 400;
+
     line-height: 1.1;
 
-    color: white;
-
-    margin-bottom: 17px;
+    color:
+        #fff;
 }
 
 .memory-text {
@@ -766,21 +920,18 @@ body {
         rgba(255,255,255,.16);
 
     background:
-        rgba(8,8,24,.6);
+        rgba(8,8,24,.68);
 
     color:
-        rgba(255,255,255,.8);
+        rgba(255,255,255,.86);
 
     font-size: 22px;
 
-    cursor: pointer;
+    cursor: none;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    backdrop-filter:
-        blur(8px);
 
     transition:
         background .25s ease,
@@ -789,9 +940,7 @@ body {
 
 .close-memory:hover {
     background:
-        rgba(255,255,255,.12);
-
-    color: white;
+        rgba(255,255,255,.13);
 
     transform:
         rotate(90deg);
@@ -804,18 +953,35 @@ body {
 
 @media (max-width: 600px) {
 
+    body {
+        cursor: auto;
+    }
+
+    #customCursor {
+        display: none;
+    }
+
+    .interactive-star,
+    .close-memory {
+        cursor: pointer;
+    }
+
     .sky-title {
-        top: 23px;
+        top: 22px;
+    }
+
+    .sky-title-sub {
+        letter-spacing: .25em;
     }
 
     .memory-image {
-        height: 240px;
+        height: 230px;
     }
 
     .memory-body {
         padding:
-            27px
-            25px
+            26px
+            24px
             30px;
     }
 
@@ -825,7 +991,7 @@ body {
 
     .center-hint {
         top:
-            calc(50% + 43px);
+            calc(50% + 62px);
 
         font-size: 11px;
     }
@@ -841,9 +1007,14 @@ body {
     *,
     *::before,
     *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .001ms !important;
+        animation-duration:
+            .001ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            .001ms !important;
     }
 }
 </style>
@@ -886,7 +1057,6 @@ body {
 
 <main id="universe">
 
-    <!-- ONE CANVAS = ALL BACKGROUND STARS -->
     <canvas id="starCanvas"></canvas>
 
     <div class="sky-title">
@@ -957,6 +1127,15 @@ body {
 
     </article>
 
+</div>
+
+
+<!-- =======================================================
+     CURSOR
+======================================================= -->
+
+<div id="customCursor">
+    <div class="cursor-heart"></div>
 </div>
 
 
@@ -1094,14 +1273,14 @@ const memories = [
    DOM
 ========================================================= */
 
+const universe =
+    document.getElementById("universe");
+
 const canvas =
     document.getElementById("starCanvas");
 
 const ctx =
     canvas.getContext("2d");
-
-const starsContainer =
-    document.getElementById("universe");
 
 const overlay =
     document.getElementById("memoryOverlay");
@@ -1127,12 +1306,96 @@ const centerHint =
 const intro =
     document.getElementById("intro");
 
+const customCursor =
+    document.getElementById("customCursor");
+
 
 /* =========================================================
-   STABLE RANDOM GENERATOR
+   CUSTOM CURSOR
 ========================================================= */
 
-let seed = 918273;
+let mouseX = -100;
+let mouseY = -100;
+
+let cursorX = -100;
+let cursorY = -100;
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        mouseX =
+            event.clientX;
+
+        mouseY =
+            event.clientY;
+    }
+);
+
+
+function animateCursor() {
+
+    cursorX +=
+        (mouseX - cursorX) * .28;
+
+    cursorY +=
+        (mouseY - cursorY) * .28;
+
+    customCursor.style.left =
+        `${cursorX}px`;
+
+    customCursor.style.top =
+        `${cursorY}px`;
+
+    requestAnimationFrame(
+        animateCursor
+    );
+}
+
+animateCursor();
+
+
+document.addEventListener(
+    "mouseover",
+    event => {
+
+        if (
+            event.target.closest(
+                ".interactive-star, .close-memory"
+            )
+        ) {
+            customCursor.classList.add(
+                "active"
+            );
+        }
+
+    }
+);
+
+
+document.addEventListener(
+    "mouseout",
+    event => {
+
+        if (
+            event.target.closest(
+                ".interactive-star, .close-memory"
+            )
+        ) {
+            customCursor.classList.remove(
+                "active"
+            );
+        }
+
+    }
+);
+
+
+/* =========================================================
+   STABLE RANDOM
+========================================================= */
+
+let seed = 879124;
 
 function random() {
 
@@ -1145,23 +1408,26 @@ function random() {
 
 
 /* =========================================================
-   BACKGROUND STARS
-=========================================================
-
-   These are NOT DOM elements.
-
-   The canvas contains all 1,700 stars in one drawing layer.
+   BACKGROUND STAR SYSTEM
 ========================================================= */
 
-const STAR_COUNT = 1700;
+const STAR_COUNT = 1100;
 
 const backgroundStars = [];
 
-function createStars() {
+let canvasWidth = 0;
+let canvasHeight = 0;
+
+
+function createBackgroundStars() {
 
     backgroundStars.length = 0;
 
-    for (let i = 0; i < STAR_COUNT; i++) {
+    for (
+        let i = 0;
+        i < STAR_COUNT;
+        i++
+    ) {
 
         backgroundStars.push({
 
@@ -1171,22 +1437,20 @@ function createStars() {
 
             radius:
                 random() < .92
-                    ? random() * 1.2 + .35
-                    : random() * 1.7 + 1,
+                    ? random() * .95 + .35
+                    : random() * 1.5 + .85,
 
             opacity:
-                random() * .45 + .25,
-
-            /*
-               Each star gets its own phase and speed,
-               but NEVER changes its position.
-            */
+                random() * .5 + .2,
 
             phase:
-                random() * Math.PI * 2,
+                random() *
+                Math.PI *
+                2,
 
             speed:
-                .0005 + random() * .0012
+                .00025 +
+                random() * .0006
 
         });
 
@@ -1194,19 +1458,12 @@ function createStars() {
 }
 
 
-/* =========================================================
-   CANVAS RESIZE
-========================================================= */
-
-let canvasWidth = 0;
-let canvasHeight = 0;
-
 function resizeCanvas() {
 
     const dpr =
         Math.min(
             window.devicePixelRatio || 1,
-            1.5
+            1.4
         );
 
     canvasWidth =
@@ -1216,10 +1473,14 @@ function resizeCanvas() {
         window.innerHeight;
 
     canvas.width =
-        Math.floor(canvasWidth * dpr);
+        Math.floor(
+            canvasWidth * dpr
+        );
 
     canvas.height =
-        Math.floor(canvasHeight * dpr);
+        Math.floor(
+            canvasHeight * dpr
+        );
 
     canvas.style.width =
         `${canvasWidth}px`;
@@ -1237,23 +1498,8 @@ function resizeCanvas() {
     );
 }
 
-createStars();
 
-resizeCanvas();
-
-window.addEventListener(
-    "resize",
-    resizeCanvas
-);
-
-
-/* =========================================================
-   DRAW BACKGROUND
-========================================================= */
-
-let animationFrame = null;
-
-function drawStars(time) {
+function drawBackgroundStars(time) {
 
     ctx.clearRect(
         0,
@@ -1262,15 +1508,16 @@ function drawStars(time) {
         canvasHeight
     );
 
-    for (const star of backgroundStars) {
+    for (
+        let i = 0;
+        i < backgroundStars.length;
+        i++
+    ) {
 
-        /*
-           Very cheap sine-based brightness pulse.
+        const star =
+            backgroundStars[i];
 
-           x/y NEVER change.
-        */
-
-        const pulse =
+        const twinkle =
             Math.sin(
                 time * star.speed +
                 star.phase
@@ -1278,19 +1525,21 @@ function drawStars(time) {
 
         const opacity =
             Math.max(
-                .08,
+                .06,
                 Math.min(
-                    1,
+                    .9,
                     star.opacity +
-                    pulse * .16
+                    twinkle * .12
                 )
             );
 
         const x =
-            star.x * canvasWidth;
+            star.x *
+            canvasWidth;
 
         const y =
-            star.y * canvasHeight;
+            star.y *
+            canvasHeight;
 
         ctx.globalAlpha =
             opacity;
@@ -1313,16 +1562,28 @@ function drawStars(time) {
 
     ctx.globalAlpha = 1;
 
-    animationFrame =
-        requestAnimationFrame(drawStars);
+    requestAnimationFrame(
+        drawBackgroundStars
+    );
 }
 
-animationFrame =
-    requestAnimationFrame(drawStars);
+
+createBackgroundStars();
+
+resizeCanvas();
+
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
+
+requestAnimationFrame(
+    drawBackgroundStars
+);
 
 
 /* =========================================================
-   INTERACTIVE STAR POSITIONS
+   MEMORY STAR POSITIONS
 ========================================================= */
 
 const positions = [
@@ -1362,15 +1623,12 @@ positions.forEach(
     (position, index) => {
 
         const star =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
 
         star.className =
             "interactive-star";
-
-        star.setAttribute(
-            "aria-label",
-            `Open memory ${index + 1}`
-        );
 
         star.style.left =
             `${position[0]}%`;
@@ -1380,43 +1638,47 @@ positions.forEach(
 
         star.style.setProperty(
             "--pulse",
-            `${2.2 + (index % 4) * .55}s`
+            `${2.4 + (index % 4) * .45}s`
         );
 
         star.style.setProperty(
             "--delay",
-            `${-(index * .37)}s`
+            `${-(index * .27)}s`
+        );
+
+        star.setAttribute(
+            "aria-label",
+            `Open memory ${index + 1}`
         );
 
         star.addEventListener(
             "click",
-            () => openMemory(index)
+            () =>
+                openMemory(index)
         );
 
-        starsContainer.appendChild(star);
+        universe.appendChild(
+            star
+        );
     }
 );
 
 
 /* =========================================================
-   SURPRISE STAR
+   CENTER SURPRISE STAR
 ========================================================= */
 
 const surpriseStar =
-    document.createElement("button");
+    document.createElement(
+        "button"
+    );
 
 surpriseStar.className =
     "interactive-star surprise-star";
 
-surpriseStar.style.left =
-    "50%";
-
-surpriseStar.style.top =
-    "50%";
-
 surpriseStar.setAttribute(
     "aria-label",
-    "Open the surprise"
+    "Special surprise"
 );
 
 surpriseStar.addEventListener(
@@ -1424,7 +1686,7 @@ surpriseStar.addEventListener(
     createHeartExplosion
 );
 
-starsContainer.appendChild(
+universe.appendChild(
     surpriseStar
 );
 
@@ -1447,30 +1709,41 @@ function svgImage(type, index) {
 
     const p =
         palettes[
-            index % palettes.length
+            index %
+            palettes.length
         ];
 
     let graphic = "";
+
 
     switch (type) {
 
         case "beginning":
 
             graphic = `
-                <circle cx="360" cy="205" r="72"
-                    fill="url(#orb)"/>
+                <circle
+                    cx="360"
+                    cy="205"
+                    r="72"
+                    fill="url(#orb)"
+                />
 
-                <circle cx="360" cy="205" r="105"
+                <circle
+                    cx="360"
+                    cy="205"
+                    r="105"
                     fill="none"
                     stroke="${p[2]}"
-                    stroke-opacity=".18"/>
+                    stroke-opacity=".18"
+                />
 
                 <path
                     d="M210 300 Q360 170 510 300"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-opacity=".35"
-                    stroke-width="2"/>
+                    stroke-width="2"
+                />
             `;
 
             break;
@@ -1484,26 +1757,30 @@ function svgImage(type, index) {
                     cy="205"
                     r="95"
                     fill="${p[1]}"
-                    opacity=".18"/>
+                    opacity=".18"
+                />
 
                 <path
                     d="M300 205 Q360 260 420 205"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="8"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
 
                 <circle
                     cx="325"
                     cy="175"
                     r="7"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
 
                 <circle
                     cx="395"
                     cy="175"
                     r="7"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
             `;
 
             break;
@@ -1515,21 +1792,24 @@ function svgImage(type, index) {
                 <path
                     d="M100 330 L260 180 L350 260 L475 120 L620 330Z"
                     fill="${p[1]}"
-                    opacity=".22"/>
+                    opacity=".22"
+                />
 
                 <path
                     d="M120 330 L270 180 L350 260 L475 120 L620 330"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-opacity=".65"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
 
                 <circle
                     cx="535"
                     cy="105"
                     r="34"
                     fill="${p[2]}"
-                    opacity=".2"/>
+                    opacity=".2"
+                />
             `;
 
             break;
@@ -1553,7 +1833,8 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-opacity=".28"
-                    stroke-width="2"/>
+                    stroke-width="2"
+                />
             `;
 
             break;
@@ -1567,20 +1848,23 @@ function svgImage(type, index) {
                     cy="190"
                     r="75"
                     fill="${p[2]}"
-                    opacity=".18"/>
+                    opacity=".18"
+                />
 
                 <circle
                     cx="380"
                     cy="175"
                     r="75"
-                    fill="${p[0]}"/>
+                    fill="${p[0]}"
+                />
 
                 <path
                     d="M160 310 Q360 250 560 310"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-opacity=".35"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
             `;
 
             break;
@@ -1594,19 +1878,22 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="9"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
 
                 <circle
                     cx="300"
                     cy="160"
                     r="7"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
 
                 <circle
                     cx="420"
                     cy="160"
                     r="7"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
             `;
 
             break;
@@ -1620,16 +1907,12 @@ function svgImage(type, index) {
                     fill="${p[1]}"
                     opacity=".28"
                     stroke="${p[2]}"
-                    stroke-opacity=".55"/>
+                    stroke-opacity=".55"
+                />
 
-                <circle cx="270" cy="205" r="7"
-                    fill="${p[2]}"/>
-
-                <circle cx="330" cy="205" r="7"
-                    fill="${p[2]}"/>
-
-                <circle cx="390" cy="205" r="7"
-                    fill="${p[2]}"/>
+                <circle cx="270" cy="205" r="7" fill="${p[2]}"/>
+                <circle cx="330" cy="205" r="7" fill="${p[2]}"/>
+                <circle cx="390" cy="205" r="7" fill="${p[2]}"/>
             `;
 
             break;
@@ -1641,7 +1924,8 @@ function svgImage(type, index) {
                 <path
                     d="M360 280 C250 210 245 130 300 115 C330 107 350 125 360 145 C370 125 390 107 420 115 C475 130 470 210 360 280Z"
                     fill="${p[2]}"
-                    opacity=".75"/>
+                    opacity=".75"
+                />
             `;
 
             break;
@@ -1655,14 +1939,16 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="13"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
 
                 <path
                     d="M490 230 Q450 180 395 225 L360 260 L390 290 L440 250 L470 280"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="13"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
             `;
 
             break;
@@ -1676,14 +1962,16 @@ function svgImage(type, index) {
                     fill="${p[1]}"
                     opacity=".3"
                     stroke="${p[2]}"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
 
                 <circle
                     cx="360"
                     cy="150"
                     r="24"
                     fill="${p[2]}"
-                    opacity=".65"/>
+                    opacity=".65"
+                />
             `;
 
             break;
@@ -1699,12 +1987,14 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="3"
-                    stroke-opacity=".55"/>
+                    stroke-opacity=".55"
+                />
 
                 <path
                     d="M360 130 L380 190 L445 205 L380 220 L360 280 L340 220 L275 205 L340 190Z"
                     fill="${p[2]}"
-                    opacity=".55"/>
+                    opacity=".55"
+                />
             `;
 
             break;
@@ -1718,14 +2008,16 @@ function svgImage(type, index) {
                     fill="${p[1]}"
                     opacity=".25"
                     stroke="${p[2]}"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
 
                 <path
                     d="M315 310 V230 H405 V310"
                     fill="${p[0]}"
                     stroke="${p[2]}"
                     stroke-opacity=".5"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
             `;
 
             break;
@@ -1739,14 +2031,16 @@ function svgImage(type, index) {
                     cy="205"
                     r="90"
                     fill="${p[1]}"
-                    opacity=".13"/>
+                    opacity=".13"
+                />
 
                 <circle
                     cx="360"
                     cy="205"
                     r="62"
                     fill="${p[2]}"
-                    opacity=".18"/>
+                    opacity=".18"
+                />
             `;
 
             break;
@@ -1759,19 +2053,22 @@ function svgImage(type, index) {
                     d="M360 285 C265 225 245 155 295 130 C325 115 350 135 360 155 C370 135 395 115 425 130 C475 155 455 225 360 285Z"
                     fill="none"
                     stroke="${p[2]}"
-                    stroke-width="5"/>
+                    stroke-width="5"
+                />
 
                 <circle
                     cx="310"
                     cy="190"
                     r="5"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
 
                 <circle
                     cx="410"
                     cy="190"
                     r="5"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
             `;
 
             break;
@@ -1785,13 +2082,15 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="4"
-                    stroke-opacity=".55"/>
+                    stroke-opacity=".55"
+                />
 
                 <circle
                     cx="570"
                     cy="105"
                     r="12"
-                    fill="${p[2]}"/>
+                    fill="${p[2]}"
+                />
             `;
 
             break;
@@ -1807,7 +2106,8 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="3"
-                    stroke-opacity=".3"/>
+                    stroke-opacity=".3"
+                />
 
                 <circle
                     cx="360"
@@ -1816,14 +2116,16 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="3"
-                    stroke-opacity=".5"/>
+                    stroke-opacity=".5"
+                />
 
                 <circle
                     cx="360"
                     cy="205"
                     r="27"
                     fill="${p[2]}"
-                    opacity=".65"/>
+                    opacity=".65"
+                />
             `;
 
             break;
@@ -1837,14 +2139,16 @@ function svgImage(type, index) {
                     fill="${p[1]}"
                     opacity=".2"
                     stroke="${p[2]}"
-                    stroke-width="4"/>
+                    stroke-width="4"
+                />
 
                 <path
                     d="M310 215 L345 250 L415 175"
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="9"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
             `;
 
             break;
@@ -1868,7 +2172,8 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-opacity=".28"
-                    stroke-width="2"/>
+                    stroke-width="2"
+                />
             `;
 
             break;
@@ -1882,7 +2187,8 @@ function svgImage(type, index) {
                     fill="none"
                     stroke="${p[2]}"
                     stroke-width="7"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
             `;
 
             break;
@@ -1896,47 +2202,53 @@ function svgImage(type, index) {
                     fill="${p[1]}"
                     opacity=".22"
                     stroke="${p[2]}"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
 
                 <path
                     d="M360 135 V285"
                     stroke="${p[2]}"
                     stroke-opacity=".35"
-                    stroke-width="3"/>
+                    stroke-width="3"
+                />
 
                 <path
                     d="M280 175 H335 M385 175 H440"
                     stroke="${p[2]}"
                     stroke-opacity=".55"
                     stroke-width="5"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
 
                 <path
                     d="M280 210 H330 M390 210 H440"
                     stroke="${p[2]}"
                     stroke-opacity=".35"
                     stroke-width="5"
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                />
             `;
 
             break;
+
     }
 
 
-    /*
-       Only 25 decorative stars per popup image.
-       These are static SVG elements, not DOM elements.
-    */
-
     let tinyStars = "";
 
-    for (let i = 0; i < 25; i++) {
+    for (
+        let i = 0;
+        i < 24;
+        i++
+    ) {
 
         const x =
-            (i * 71 + index * 37) % 700 + 10;
+            (i * 71 + index * 37)
+            % 700 + 10;
 
         const y =
-            (i * 43 + index * 61) % 330 + 15;
+            (i * 43 + index * 61)
+            % 330 + 15;
 
         const r =
             (i % 3) + .6;
@@ -1958,7 +2270,8 @@ function svgImage(type, index) {
             xmlns="http://www.w3.org/2000/svg"
             width="720"
             height="380"
-            viewBox="0 0 720 380">
+            viewBox="0 0 720 380"
+        >
 
             <defs>
 
@@ -1967,44 +2280,55 @@ function svgImage(type, index) {
                     x1="0"
                     y1="0"
                     x2="1"
-                    y2="1">
+                    y2="1"
+                >
 
                     <stop
                         offset="0"
-                        stop-color="${p[0]}"/>
+                        stop-color="${p[0]}"
+                    />
 
                     <stop
                         offset=".55"
-                        stop-color="${p[1]}"/>
+                        stop-color="${p[1]}"
+                    />
 
                     <stop
                         offset="1"
-                        stop-color="#080918"/>
+                        stop-color="#080918"
+                    />
 
                 </linearGradient>
+
 
                 <radialGradient id="orb">
 
                     <stop
                         offset="0"
-                        stop-color="${p[2]}"/>
+                        stop-color="${p[2]}"
+                    />
 
                     <stop
                         offset=".4"
-                        stop-color="${p[1]}"/>
+                        stop-color="${p[1]}"
+                    />
 
                     <stop
                         offset="1"
-                        stop-color="transparent"/>
+                        stop-color="transparent"
+                    />
 
                 </radialGradient>
 
             </defs>
 
+
             <rect
                 width="720"
                 height="380"
-                fill="url(#bg)"/>
+                fill="url(#bg)"
+            />
+
 
             <ellipse
                 cx="360"
@@ -2012,11 +2336,14 @@ function svgImage(type, index) {
                 rx="280"
                 ry="130"
                 fill="${p[1]}"
-                opacity=".08"/>
+                opacity=".08"
+            />
+
 
             ${tinyStars}
 
             ${graphic}
+
 
             <text
                 x="360"
@@ -2026,22 +2353,24 @@ function svgImage(type, index) {
                 opacity=".35"
                 font-family="Georgia, serif"
                 font-size="11"
-                letter-spacing="5">
-
+                letter-spacing="5"
+            >
                 OUR UNIVERSE
-
             </text>
 
         </svg>
     `;
 
-    return "data:image/svg+xml;charset=UTF-8," +
-        encodeURIComponent(svg);
+
+    return (
+        "data:image/svg+xml;charset=UTF-8,"
+        + encodeURIComponent(svg)
+    );
 }
 
 
 /* =========================================================
-   OPEN MEMORY
+   MEMORY OPEN
 ========================================================= */
 
 function openMemory(index) {
@@ -2056,7 +2385,7 @@ function openMemory(index) {
         );
 
     memoryImage.alt =
-        `Cosmic artwork representing ${memory.title}`;
+        memory.title;
 
     memoryNumber.textContent =
         `Memory ${String(index + 1).padStart(2, "0")} · 20`;
@@ -2067,23 +2396,29 @@ function openMemory(index) {
     memoryText.textContent =
         memory.text;
 
-    overlay.classList.add("open");
+    overlay.classList.add(
+        "open"
+    );
 }
 
 
 /* =========================================================
-   CLOSE MEMORY
+   MEMORY CLOSE
 ========================================================= */
 
 function closeMemoryPopup() {
 
-    overlay.classList.remove("open");
+    overlay.classList.remove(
+        "open"
+    );
 }
+
 
 closeMemory.addEventListener(
     "click",
     closeMemoryPopup
 );
+
 
 overlay.addEventListener(
     "click",
@@ -2097,6 +2432,7 @@ overlay.addEventListener(
 
     }
 );
+
 
 document.addEventListener(
     "keydown",
@@ -2113,12 +2449,14 @@ document.addEventListener(
 
 
 /* =========================================================
-   HEART EXPLOSION
+   SURPRISE HEART EFFECT
 ========================================================= */
 
 function createHeartExplosion() {
 
-    centerHint.classList.add("hidden");
+    centerHint.classList.add(
+        "hidden"
+    );
 
     const rect =
         surpriseStar.getBoundingClientRect();
@@ -2131,14 +2469,8 @@ function createHeartExplosion() {
         rect.top +
         rect.height / 2;
 
+    const count = 34;
 
-    /*
-       45 hearts instead of 55.
-       This keeps the effect beautiful while reducing
-       the temporary workload.
-    */
-
-    const count = 45;
 
     for (
         let i = 0;
@@ -2147,10 +2479,13 @@ function createHeartExplosion() {
     ) {
 
         const heart =
-            document.createElement("span");
+            document.createElement(
+                "span"
+            );
 
         heart.className =
             "heart-particle";
+
 
         heart.style.left =
             `${originX}px`;
@@ -2160,33 +2495,29 @@ function createHeartExplosion() {
 
 
         const angle =
-            Math.random() *
-            Math.PI *
-            2;
+            Math.random()
+            * Math.PI
+            * 2;
 
         const distance =
-            50 +
-            Math.random() *
-            150;
+            45 +
+            Math.random() * 120;
 
         const drift =
-            Math.cos(angle) *
-            distance;
+            Math.cos(angle)
+            * distance;
 
         const rise =
-            120 +
-            Math.random() *
-            280;
+            110 +
+            Math.random() * 230;
 
         const scale =
-            .45 +
-            Math.random() *
-            1.1;
+            .4 +
+            Math.random() * .9;
 
         const duration =
-            2.1 +
-            Math.random() *
-            2.1;
+            1.9 +
+            Math.random() * 1.6;
 
 
         heart.style.setProperty(
@@ -2209,8 +2540,9 @@ function createHeartExplosion() {
             `${duration}s`
         );
 
+
         heart.style.animationDelay =
-            `${Math.random() * .4}s`;
+            `${Math.random() * .25}s`;
 
 
         document.body.appendChild(
@@ -2219,9 +2551,12 @@ function createHeartExplosion() {
 
 
         setTimeout(
-            () => heart.remove(),
-            (duration + .6) * 1000
+            () =>
+                heart.remove(),
+            (duration + .5)
+            * 1000
         );
+
     }
 }
 
@@ -2236,16 +2571,17 @@ window.addEventListener(
 
         setTimeout(
             () => {
+
                 intro.classList.add(
                     "hidden"
                 );
+
             },
             3200
         );
 
     }
 );
-
 </script>
 
 </body>
