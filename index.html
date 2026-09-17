@@ -83,7 +83,7 @@
 
   <canvas id="sky"></canvas>
 
-  <!-- 20 Stars -->
+  <!-- 20 Clickable Stars -->
   <div class="star" style="top:15%; left:20%;" onclick="showMemory('memory1')"></div>
   <div class="star" style="top:25%; left:40%;" onclick="showMemory('memory2')"></div>
   <div class="star" style="top:35%; left:70%;" onclick="showMemory('memory3')"></div>
@@ -135,7 +135,7 @@
     canvas.height = window.innerHeight;
 
     let stars = [];
-    for(let i=0;i<2000;i++){ // thousands of stars
+    for(let i=0;i<3000;i++){ // thousands of background stars
       stars.push({
         x:Math.random()*canvas.width,
         y:Math.random()*canvas.height,
@@ -146,4 +146,5 @@
     function drawStars(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       ctx.fillStyle="white";
-      for(let i=0
+      for(let i=0;i<stars.length;i++){
+        ctx.beginPath();
