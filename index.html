@@ -1260,8 +1260,6 @@ const overlay =
 const memoryImage =
     document.getElementById("memoryImage");
 
-const memoryNumber =
-    document.getElementById("memoryNumber");
 
 const memoryTitle =
     document.getElementById("memoryTitle");
@@ -2358,8 +2356,6 @@ function openMemory(index) {
     memoryImage.alt =
         memory.title;
 
-    memoryNumber.textContent =
-        `Memory ${String(index + 1).padStart(2, "0")} · ${memories.length}`;
 
     memoryTitle.textContent =
         memory.title;
